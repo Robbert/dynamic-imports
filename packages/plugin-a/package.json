@@ -1,0 +1,8 @@
+{
+  "name": "@robbert/plugin-a",
+  "version": "1.0.0",
+  "plugin": "./index.ts",
+  "dependencies": {
+    "@robbert/platform": "1.0.0"
+  }
+}

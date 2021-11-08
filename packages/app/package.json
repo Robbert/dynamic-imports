@@ -1,0 +1,10 @@
+{
+  "name": "@robbert/app",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@robbert/platform": "1.0.0",
+    "@robbert/plugin-a": "1.0.0",
+    "@robbert/plugin-b": "1.0.0"
+  }
+}

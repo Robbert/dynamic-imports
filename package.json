@@ -1,12 +1,27 @@
 {
-  "name": "dynamic-imports",
+  "name": "@robbert/dynamic-imports",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "prebuild": "npm run clean",
+    "build": "npm-run-all build:**",
+    "build:ts": "tsc --build",
+    "build:app": "vite build",
+    "clean": "rimraf dist/ packages/*/dist/",
+    "format": "prettier --write .",
+    "lint": "npm-run-all",
+    "lint:prettier": "prettier --check .",
+    "lint:ts": "tsc --project tsconfig.json --noEmit",
     "serve": "vite preview"
   },
+  "dependencies": {
+    "@robbert/app": "1.0.0"
+  },
   "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
     "typescript": "^4.3.2",
     "vite": "^2.6.4"
   }

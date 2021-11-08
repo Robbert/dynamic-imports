@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "@robbert/app": ["./packages/app/src/index.ts"],
+      "@robbert/platform": ["./packages/platform/src/index.ts"],
+      "@robbert/plugin-a": ["./packages/plugin-a/src/index.ts"],
+      "@robbert/plugin-b": ["./packages/plugin-b/src/index.ts"]
+    },
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true
+  }
+}

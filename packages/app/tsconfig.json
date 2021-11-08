@@ -1,22 +1,21 @@
 {
-  "extends": "./tsconfig.default.json",
+  "extends": "../../tsconfig.default.json",
   "compilerOptions": {
+    "composite": true,
     "outDir": "dist/",
+    "rootDir": "src/",
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
   "include": ["./src/**/*"],
   "references": [
     {
-      "path": "./packages/app"
+      "path": "../platform"
     },
     {
-      "path": "./packages/plugin-a"
+      "path": "../plugin-a"
     },
     {
-      "path": "./packages/plugin-b"
-    },
-    {
-      "path": "./packages/platform"
+      "path": "../plugin-b"
     }
   ]
 }
