@@ -1,4 +1,4 @@
-import { isPlugin, Plugin } from '@robbert/platform/src/index';
+import { isPlugin, Plugin } from '@robbert/platform';
 
 export const parsePackageReference = (
   reference: string,

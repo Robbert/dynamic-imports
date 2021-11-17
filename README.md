@@ -61,3 +61,14 @@ High level this looks something like this:
 - this bundle holds a JavaScript module and probably some metadata that describes the module
 - the metadata is used to store information about the module and make it accessible for someone to reference
 - such a reference then itself becomes a `dynamic import`, allowing functionality to be added to a running system
+
+## Steps for creating a new plugin
+
+- create `new-package` directory in `packages/`
+- create with `package.json` with a signal that identifies itself as plugin, currently that is by adding a `plugin` attribute: `"plugin": "./index.ts",`
+- create a `tsconfig.json` with `"composite": true`
+- if the package has dependencies from this workspace, install them using `pnpm add {other-package}`, and include a reference to that package location in `tsconfig`: `"references": [{ "path": "../other-package" }]`.
+- include the package name and location in the `/tsconfig.default.json` by including it in the `paths` section, for example: `"@scope/new-package": ["./packages/new-package/src/index.ts"]`, to ensure that during development you load the TypeScript file instead of the build artifact from `dist/`
+- include the package in your typescript project by including it in `/tsconfig.json` in the `references` section using `{ "path": "./packages/new-package" }`
+- let pnpm discover the new package using `pnpm install`
+- create an entry script in the plugin (`packages/new-package/src/index.ts`) that has a default export that matches the `Plugin` interface from the `platform` package.

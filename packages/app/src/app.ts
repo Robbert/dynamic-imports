@@ -1,4 +1,4 @@
-import { isSomething, Plugin, Something } from '@robbert/platform/src/index';
+import { isSomething, Plugin, Something } from '@robbert/platform';
 import { MyDocument } from './document';
 import { renderDocument } from './render';
 
