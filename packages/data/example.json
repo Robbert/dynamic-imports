@@ -1,0 +1,21 @@
+{
+  "$schema": "https://example.com/my-document/1.0/",
+  "meta": {
+    "types": ["@robbert/plugin-a@1.0.0", "@robbert/plugin-b@1.0.0"]
+  },
+  "root": [
+    {
+      "type": "@robbert/plugin-a@1.0.0",
+      "children": [
+        {
+          "type": "@robbert/plugin-b@1.0.0",
+          "textContent": "Hello,\n"
+        },
+        {
+          "type": "@robbert/plugin-b@1.0.0",
+          "textContent": "World!"
+        }
+      ]
+    }
+  ]
+}

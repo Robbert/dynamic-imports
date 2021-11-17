@@ -1,44 +1,11 @@
-import {
-  isPlugin,
-  isSomething,
-  Plugin,
-  Something,
-} from '@robbert/platform/src/index';
+import { loadDocument } from './document';
+import { loadPlugins } from './plugin';
+import { startApp } from './app';
 
-const resolvePlugin = (name: string) => `/packages/${name}/dist/index.js`;
-
-const useSomethingPlugin = (plugin: Plugin<Something>) => {
-  plugin.exports.doSomething();
-};
-
-const usePlugin = ({ name, version }: Plugin) => {
-  const test = document.createElement('pre');
-  test.textContent = `${name}@${version}`;
-  document.body.appendChild(test);
-};
-
-const imports = ['plugin-a', 'plugin-b'].map(resolvePlugin).map((url) => {
-  return import(/* @vite-ignore */ url);
-});
-
-Promise.all(imports).then((modules) => {
-  const plugins = modules.map((module) => module.default);
-
-  if (!plugins.every(isPlugin)) {
-    throw new TypeError();
-  }
-
-  console.log(
-    `${plugins.length} plugins loaded:\n${plugins
-      .map(({ name, version }) => `- ${name}@${version}`)
-      .join('\n')}`,
+loadDocument('/data/example.json').then((doc) => {
+  // A document specifies what element types are used to create the document,
+  // and this step loads the plugins necessary to edit such elements.
+  Promise.all(loadPlugins(doc.meta.types)).then((plugins) =>
+    startApp({ doc, plugins }),
   );
-
-  plugins.forEach(usePlugin);
-
-  const somethingPlugins = plugins.filter((plugin) =>
-    isSomething(plugin.exports),
-  );
-
-  somethingPlugins.forEach(useSomethingPlugin);
 });
