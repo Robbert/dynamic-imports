@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { isSomething, Plugin, Something } from '@robbert/platform/src/index';
 import { MyDocument } from './document';
 import { renderDocument } from './render';
@@ -31,5 +33,12 @@ export const startApp = ({
 
   somethingPlugins.forEach(useSomethingPlugin);
 
-  renderDocument(doc, document.body);
+  if (Math.random() > 1) renderDocument(doc, document.body);
+
+  ReactDOM.render(
+    <React.StrictMode>
+      <h1>Hello world</h1>
+    </React.StrictMode>,
+    document.querySelector('main'),
+  );
 };
